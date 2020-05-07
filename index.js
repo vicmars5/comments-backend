@@ -20,10 +20,10 @@ app.use(async (ctx, next) => {
 
 app.use(commentsRoutes.routes())
 app.use(commentsRoutes.allowedMethods())
+
 app.use(async (ctx) => {
   ctx.body = { foo: 'bar' }
 })
-
 
 const port = 3000
 app.listen(port)
