@@ -10,10 +10,10 @@ router.get('/comments', async (ctx) => {
   }
 })
 
-router.post('/comments', (ctx) => {
+router.post('/comments', async (ctx) => {
   console.log(ctx.request.body)
-  const { comment } = ctx.request.body
-  ctx.body = Models.Comments.create({ comment, votes: 0 })
+  const { comment, votes = 0 } = ctx.request.body
+  ctx.body = await Models.Comments.create({ comment, votes })
 })
 
 router.put('/comments', (ctx) => {
